@@ -4,6 +4,8 @@ import 'package:itty/pages/home.dart';
 import 'package:itty/pages/login.dart';
 import 'package:itty/pages/notes.dart';
 import 'package:itty/pages/links.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,46 +24,51 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          child: PageView(
-            controller: _controller,
-            onPageChanged: (index) {
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+        splash: Splash(),
+        nextScreen: Scaffold(
+          body: Container(
+            child: PageView(
+              controller: _controller,
+              onPageChanged: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              children: const [Home(), Login(), Notes(), Links()],
+            ),
+          ),
+          bottomNavigationBar: BottomNavyBar(
+            selectedIndex: _selectedIndex,
+            onItemSelected: (index) {
               setState(() {
                 _selectedIndex = index;
+                _controller.animateToPage(index,
+                    duration: Duration(milliseconds: 300), curve: Curves.ease);
               });
             },
-            children: const [Home(), Login(), Notes(), Links()],
+            items: [
+              BottomNavyBarItem(
+                  icon: Icon(Icons.apps),
+                  title: Text("Home"),
+                  activeColor: Colors.red),
+              BottomNavyBarItem(
+                  icon: Icon(Icons.people),
+                  title: Text("Users"),
+                  activeColor: Colors.purpleAccent),
+              BottomNavyBarItem(
+                  icon: Icon(Icons.message),
+                  title: Text("Message"),
+                  activeColor: Colors.pink),
+              BottomNavyBarItem(
+                  icon: Icon(Icons.settings),
+                  title: Text("Settings"),
+                  activeColor: Colors.purpleAccent),
+            ],
           ),
         ),
-        bottomNavigationBar: BottomNavyBar(
-          selectedIndex: _selectedIndex,
-          onItemSelected: (index) {
-            setState(() {
-              _selectedIndex = index;
-              _controller.animateToPage(index,
-                  duration: Duration(milliseconds: 300), curve: Curves.ease);
-            });
-          },
-          items: [
-            BottomNavyBarItem(
-                icon: Icon(Icons.apps),
-                title: Text("Home"),
-                activeColor: Colors.red),
-            BottomNavyBarItem(
-                icon: Icon(Icons.people),
-                title: Text("Users"),
-                activeColor: Colors.purpleAccent),
-            BottomNavyBarItem(
-                icon: Icon(Icons.message),
-                title: Text("Message"),
-                activeColor: Colors.pink),
-            BottomNavyBarItem(
-                icon: Icon(Icons.settings),
-                title: Text("Settings"),
-                activeColor: Colors.purpleAccent),
-          ],
-        ),
+        backgroundColor: Colors.blueAccent,
       ),
     );
   }
