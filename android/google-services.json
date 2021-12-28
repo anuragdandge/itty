@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1084403885885",
+    "project_id": "itty-1c5b2",
+    "storage_bucket": "itty-1c5b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084403885885:android:b72e03cb3f14e1a4624754",
+        "android_client_info": {
+          "package_name": "com.example.itty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084403885885-7c8fn39c2rnoe3iiivh314rqvu4bne7l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.itty",
+            "certificate_hash": "e241ae72120da903bc7044a6cb493ba285d4f78b"
+          }
+        },
+        {
+          "client_id": "1084403885885-0st9pgguqi1j7fei9mujvip75m5qlt9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu7XtBJn0ld4wUPVUQ1_XPfw5j-rYAkPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084403885885-0st9pgguqi1j7fei9mujvip75m5qlt9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
